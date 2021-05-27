@@ -16,8 +16,6 @@ app.get("/",function(req,res){
 })
 
 app.get("/snake",function(req,res){
-	
-	
 	res.render("snake",{name:req.query.name});
 })
 
@@ -36,9 +34,7 @@ io.on("connection",function(socket){
 			else{
 				var t_id=user.substring(0,36);
 				io.to(t_id).emit("message","user has joined");
-			}
-		//	io.to(user+"hoast").emit("message","user has joined")
-			
+			}			
 		}catch(err){
 			return err;
 		}
@@ -67,7 +63,6 @@ io.on("connection",function(socket){
 				var t_id=down.id.substring(0,36);
 				io.to(t_id).emit("down_event","down");
 			}
-			//socket.broadcast.emit("down_event","down");
 		}catch(err){
 			return err;
 		}
